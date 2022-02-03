@@ -107,7 +107,7 @@ public interface MengdeADT<T> extends Iterable<T>{
 	 */
 	
 	
-	Iterator<T> oppramser();
+	Iterator<T> iterator();
 
 	
 

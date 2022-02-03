@@ -9,7 +9,7 @@ import java.util.Random;
 import no.hvl.dat102.exception.EmptyCollectionException;
 import no.hvl.dat102.mengde.adt.MengdeADT;
 
-public class KjedetMengde<T> implements MengdeADT<T>{
+public class KjedetMengde<T> implements MengdeADT<T> {
 	private static Random rand = new Random();
 	private int antall; // antall elementer i mengden
 	private LinearNode<T> start;
@@ -34,7 +34,7 @@ public class KjedetMengde<T> implements MengdeADT<T>{
 
 	@Override
 	public void leggTilAlle(MengdeADT<T> m2) {
-		Iterator<T> teller = m2.oppramser();
+		Iterator<T> teller = m2.iterator();
 		while (teller.hasNext()) {
 			leggTil(teller.next());
 		}
@@ -130,7 +130,7 @@ public class KjedetMengde<T> implements MengdeADT<T>{
 
 	@Override
 	public boolean equals(Object ny) {
-		
+
 		if (this == ny) {
 			return true;
 		}
@@ -139,23 +139,23 @@ public class KjedetMengde<T> implements MengdeADT<T>{
 		}
 		if (getClass() != ny.getClass()) {
 			return false;
-		} 
-			boolean likeMengder = true;
-			MengdeADT<T> m2 = (KjedetMengde<T>) ny;
-			if (this.antall != m2.antall()) {
-				likeMengder = false;
-			} else {
-				likeMengder = true;
-				Iterator<T> teller = m2.oppramser();
-				while (teller.hasNext() && likeMengder) {
-					T element = teller.next();
-					if (!this.inneholder(element)) {
-						likeMengder = false;
-					}
+		}
+		boolean likeMengder = true;
+		MengdeADT<T> m2 = (KjedetMengde<T>) ny;
+		if (this.antall != m2.antall()) {
+			likeMengder = false;
+		} else {
+			likeMengder = true;
+			Iterator<T> teller = m2.iterator();
+			while (teller.hasNext() && likeMengder) {
+				T element = teller.next();
+				if (!this.inneholder(element)) {
+					likeMengder = false;
 				}
-				return likeMengder;
 			}
-		
+			return likeMengder;
+		}
+
 		return false;
 	}
 
@@ -181,7 +181,7 @@ public class KjedetMengde<T> implements MengdeADT<T>{
 			aktuell = aktuell.getNeste();
 		}
 
-		Iterator<T> teller = m2.oppramser();
+		Iterator<T> teller = m2.iterator();
 		while (teller.hasNext()) {
 			element = teller.next();
 			if (!this.inneholder(element)) {// tester mot "konstant" mengde
@@ -227,7 +227,7 @@ public class KjedetMengde<T> implements MengdeADT<T>{
 	}
 
 	@Override
-	public Iterator<T> oppramser() {
+	public Iterator<T> iterator() {
 		return new KjedetIterator<T>(start);
 	}
 
@@ -238,10 +238,5 @@ public class KjedetMengde<T> implements MengdeADT<T>{
 		antall++;
 	}
 
-	@Override
-	public Iterator<T> iterator() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }// class
