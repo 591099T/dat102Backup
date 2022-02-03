@@ -1,5 +1,6 @@
 package no.hvl.dat102;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -101,7 +102,7 @@ public class KoeADTTest {
 		 * Test på at en stabel med null elementer er tom.
 		 */
 		@Test
-		public final void pushPopErTom() {
+		public final void innUtKoeErTom() {
 			try {
 				koe.innKoe(e0);
 				koe.utKoe();
@@ -116,7 +117,7 @@ public class KoeADTTest {
 		 * Testing på peek.
 		 */
 		@Test
-		public final void pushPopPushPushPopPeek() {
+		public final void innUtInnInnUtFoerste() {
 			try {
 				koe.innKoe(e2);
 				koe.utKoe();
