@@ -73,16 +73,46 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	public void leggTil(T element) {
 
 		// ...Fyll ut
+		int i = 0;
+		if(i< bak && element.compareTo(liste[i]))
+		i++;
+		int j = bak;
+		
+		
 	}
 
 	@Override
 	public boolean inneholder(T element) {
 		return (finn(element) != IKKE_FUNNET);
+		int i = 0, resultat = -1;
+		if(!erTom()) {
+			while(i < bak && element.compareTo(liste[i]) > 0) {
+				i++;
+			}
+			if(i < bak && element.compareTo(liste[i]) == 0) {
+				resultat = i;
+			}
+		}return resultat;
 	}
 
 	@Override
 	public T fjern(T element) {
 		// ...Fyll ut
+		if(erTom())
+			throw new EmptyCollectionException("ordnet liste");
+		T resultat = null;
+		int indks = finn(element);
+		
+		if(indeks != IKKE_FUNNET) {
+			resultat = liste[indeks];
+			bak--;
+			/** skifter elementene etter det vi fjernet en plass opp */
+			for(int i = indeks; i < bak; i++) {
+				liste[i] = liste[i + 1];
+				
+			}
+			liste[bak] = null;
+		}return resultat;
 		return element;
 
 	}
@@ -90,6 +120,8 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	private int finn(T el) {
 		int i = 0, resultat = IKKE_FUNNET;
 		// ...Fyll ut
+		
+		
 		return resultat;
 	}
 

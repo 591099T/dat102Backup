@@ -196,12 +196,25 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	public MengdeADT<T> snitt(MengdeADT<T> m2) {
 		// TODO
 		MengdeADT<T> snittM = new KjedetMengde<T>();
+		LinearNode<T> aktuell = start;
 		T element;
+		
+		while (aktuell != null) {// ubetinget innsetting
+			((KjedetMengde<T>) snittM).settInn(aktuell.getElement());
+			aktuell = aktuell.getNeste();
+		}		
 		/*
 		 * ..
 		 * 
 		 * if (this.inneholder(element)) ((KjedetMengde<T>) snittM).settInn(element);
 		 */
+		Iterator<T> teller = m2.iterator();
+			while (teller.hasNext()) {
+				element = teller.next();
+				((KjedetMengde<T>) snittM).settInn(element);	
+			}
+			snittM = snittM / snittM.antall();
+		
 		return snittM;
 	}
 
@@ -209,11 +222,23 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	public MengdeADT<T> differens(MengdeADT<T> m2) {
 		// TODO
 		MengdeADT<T> differensM = new KjedetMengde<T>();
+		LinearNode<T> aktuell = start;
 		T element;
+		while (aktuell != null) {// ubetinget innsetting
+			((KjedetMengde<T>) differensM).settInn(aktuell.getElement());
+			aktuell = aktuell.getNeste();
+		}
 		/*
 		 * Fyll ut
 		 * 
 		 */
+		Iterator<T> teller = m2.iterator();
+		while (teller.hasNext()) {
+			element = teller.next();
+			if (!this.inneholder(element)) {// tester mot "konstant" mengde
+				((KjedetMengde<T>) differensM).settInn(element);
+			}
+		}
 
 		return differensM;
 	}
@@ -223,6 +248,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		// TODO
 		boolean erUnderMengde = true;
 		// ...
+		
 		return erUnderMengde;
 	}
 
