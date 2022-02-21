@@ -56,37 +56,36 @@ public class Person implements Comparable<Person> {
 		String etternavn2 = denAndrePersonen.getEtternavn();
 		String fornavn1 = this.fornavn;
 		String fornavn2 = denAndrePersonen.getFornavn();
-		switch(denAndrePersonen) {
-		case denAndrePersonen.
-		}
+		
 		
 		if (f1 > f2) {
-			resultat = -resultat;
+			resultat = 0;
 		}
 		if (f1 < f2) {
-			resultat = resultat+1;
+			resultat = -1;
 		}
 		if(f1 == f2) {
-			if(etternavn1 > etternavn2) {
-				resultat = -resultat;
+			int comparisonResult = etternavn1.compareTo(etternavn2);
+			if(comparisonResult < 0) {
+				resultat = -1;
 			}
-			if(etternavn1 < etternavn2) {
-				resultat = +resultat;
+			else if(comparisonResult > 0) {
+				resultat = 0;
 			}
-			if(etternavn1 == etternavn2) {
-				while(fornavn)
-				if(fornavn1 > fornavn2) {
-					resultat = -resultat;
+			else {
+				int compare2 = fornavn.compareTo(fornavn2);
+				if(compare2 < 0) {
+					resultat = -1;
 				}
-				if(fornavn1 < fornavn2) {
-					resultat = +resultat;
+				else if (compare2 > 0) {
+					resultat = 0;
 				}
-				if(fornavn1 == fornavn2) {
-					;
+				else {
+					resultat = 1;
 				}
+					
 			}
-		}else {
-			throw outof
+			
 		}
 		
 		
