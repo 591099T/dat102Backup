@@ -13,6 +13,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	private static Random rand = new Random();
 	private int antall; // antall elementer i mengden
 	private LinearNode<T> start;
+	private String resultat;
 
 	/**
 	 * Oppretter en tom mengde.
@@ -229,7 +230,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 			aktuell = aktuell.getNeste();
 		}
 		/*
-		 * Fyll ut
+		 * 
 		 * 
 		 */
 		Iterator<T> teller = m2.iterator();
@@ -246,6 +247,19 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	@Override
 	public boolean undermengde(MengdeADT<T> m2) {
 		// TODO
+		LinearNode<T> aktuell = start;
+		MengdeADT<T> overmengde = this;
+		MengdeADT<T> undermengde = m2;
+
+		while(aktuell != null) {
+			if(sortert.length >= m2.length) {
+				
+			}
+			if(overmengde.containsALL(Mengde<T> m2)) {
+				return true;
+			}
+		}
+		
 		boolean erUnderMengde = true;
 		// ...
 		
@@ -263,5 +277,19 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		start = nyNode;
 		antall++;
 	}
+	
+	@Override
+	public String toString(){// For klassen
+		
+	
+		String resultat = " ";
+		LinearNode<T> aktuell = start;
+		while(aktuell != null){
+		resultat += aktuell.getElement().toString() + "\t"; 
+		aktuell = aktuell.getNeste();
+		}
+		return resultat;
+		}
+
 
 }// class

@@ -50,6 +50,46 @@ public class Person implements Comparable<Person> {
 
 	public int compareTo(Person denAndrePersonen) {
 		int resultat = 0;
+		int f1 = this.foedselsaar;
+		int f2 = denAndrePersonen.getFoedselsaar();
+		String etternavn1 = this.etternavn;
+		String etternavn2 = denAndrePersonen.getEtternavn();
+		String fornavn1 = this.fornavn;
+		String fornavn2 = denAndrePersonen.getFornavn();
+		switch(denAndrePersonen) {
+		case denAndrePersonen.
+		}
+		
+		if (f1 > f2) {
+			resultat = -resultat;
+		}
+		if (f1 < f2) {
+			resultat = resultat+1;
+		}
+		if(f1 == f2) {
+			if(etternavn1 > etternavn2) {
+				resultat = -resultat;
+			}
+			if(etternavn1 < etternavn2) {
+				resultat = +resultat;
+			}
+			if(etternavn1 == etternavn2) {
+				while(fornavn)
+				if(fornavn1 > fornavn2) {
+					resultat = -resultat;
+				}
+				if(fornavn1 < fornavn2) {
+					resultat = +resultat;
+				}
+				if(fornavn1 == fornavn2) {
+					;
+				}
+			}
+		}else {
+			throw outof
+		}
+		
+		
 		//... Fyll ut
 		//Kall på compareTo i Stringklassen
 		return resultat;

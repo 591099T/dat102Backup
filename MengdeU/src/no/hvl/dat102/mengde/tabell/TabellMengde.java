@@ -7,6 +7,7 @@ import java.util.Random;
 import no.hvl.dat102.exception.EmptyCollectionException;
 import no.hvl.dat102.mengde.adt.MengdeADT;
 import no.hvl.dat102.mengde.kjedet.KjedetMengde;
+import no.hvl.dat102.mengde.kjedet.LinearNode;
 
 public class TabellMengde<T> implements MengdeADT<T> {
 	// ADT-en Mengde implementert som tabell
@@ -177,7 +178,11 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		MengdeADT<T> begge = new TabellMengde<T>();
 		T element = null;
 		/*
-		 * ...
+		 * ...for (int i = 0; i < antall; i++) {
+	 * begge.leggTil(tab[i]); } Iterator<T> teller = m2.oppramser();
+	 * 
+	 * while (teller.hasNext()) { begge.leggTil(teller.next()); } return
+	 * (MengdeADT<T>)begge; }
 		 * 
 		 */
 		return begge;
@@ -210,6 +215,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	@Override
 	public boolean undermengde(MengdeADT<T> m2) {
 		//TODO
+		
 		boolean erUnderMengde = true;
 		// ...
 		return false;
@@ -227,6 +233,19 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		tab[antall] = element;
 		antall++;
 	}
+	
+	@Override
+	public String toString(){// For klassen
+		
+	
+		String resultat = " ";
+		tab[] aktuell = start;
+		while(aktuell != null){
+		resultat += aktuell.getElement().toString() + "\t"; 
+		aktuell = aktuell.getNeste();
+		}
+		return resultat;
+		}
 
 	
 
