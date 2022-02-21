@@ -40,8 +40,18 @@ public class Medlem {
 		}
 		
 		
-		passerTil(Medlem medlem2) {
-			
+		public void passerTil(Medlem medlem2) {
+			//Har dei nøyaktig samme hobbyane. 
+			//(Like mengder)
+			if (this == medlem2) {
+				return true;
+			}
+			if (medlem2 == null ) {
+				return false;
+			}
+			if (getClass() != getClass(medlem2)) {
+				return false;
+			}
 		}
 		//… Andre metoder
 		}
