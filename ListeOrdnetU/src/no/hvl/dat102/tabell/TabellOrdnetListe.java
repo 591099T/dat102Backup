@@ -95,7 +95,8 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		 * 
 		 * 
 		 * }*/
-		for (int i = foerste(liste[]); i <= bak; i++) {
+		//***************************************************
+	/**	for (int i = foerste(liste[]); i <= bak; i++) {
 			T temp = liste[i];
 			int j = i-1;
 			boolean ferdig = false;
@@ -108,7 +109,7 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 				}
 			}
 			liste[j+1]=temp;
-		}
+		}*/
 		
 		// **************************************************
 		 T resultat = null;

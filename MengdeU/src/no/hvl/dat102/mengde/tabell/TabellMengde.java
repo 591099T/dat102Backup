@@ -182,7 +182,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	public MengdeADT<T> union(MengdeADT<T> m2) { // fylt ut
 		//TODO - Lage en mer effektiv kode
 		MengdeADT<T> begge = new TabellMengde<T>();
-		T element = null;
+		
 		/*
 		 * ...for (int i = 0; i < antall; i++) {
 	 * begge.leggTil(tab[i]); } Iterator<T> teller = m2.oppramser();
@@ -192,20 +192,21 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		 * 
 		 */
 		return begge;
-	}//
+	}
 
 	@Override
 	public MengdeADT<T> snitt(MengdeADT<T> m2) { // Fylt ut
 		TabellMengde<T> snittM = new TabellMengde<T>();
-		T element = null;
+	
+		TabellMengde<T> temp = new TabellMengde<T>();
 		
 		for (int i=0; i<antall;i++) {
 		 	if(m2.inneholder(tab[i])){
-		 	TabellMengde<T >snittM = settInn(tab[i]);
+		 	snittM.settInn(tab[i]);
 		 		
 		 }
 		}
-		 
+		
 		 
 		return snittM;
 	}
@@ -214,7 +215,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	public MengdeADT<T> differens(MengdeADT<T> m2) {  // fylt ut
 		//TODO
 		TabellMengde<T> differensM = new TabellMengde<T>();
-		T element;
+		
 		/*
 		 * Map<Integer, Integer> teller = new HashMap<>();
 		 * for(int value : m2) {
@@ -223,6 +224,23 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		 * 
 		 * if (!m2.inneholder(element)) ((TabellMengde<T>) differensM).settInn(element);
 		 */
+		
+		for(int i = 0; i<antall; i++) {
+			if(!m2.inneholder(tab[i])) {
+				differensM.leggTil(tab[i]);
+			}
+		}
+		if(union(m2) == snitt(m2)) {
+			break;
+		}
+		else if(union(m2) != snitt(m2)) {
+			while(snitt(m2) != null && tab[m2].inneholder(m2)) {
+				
+			}
+			differensM = union(m2).fjern(snitt(m2));
+		}
+		
+		
 
 		return differensM;
 	}
@@ -254,10 +272,10 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		
 	
 		String resultat = " ";
-		tab[] aktuell = antall;
-		while(aktuell != null){
-		resultat += aktuell.getElement().toString() + "\t"; 
-		aktuell = aktuell.getNeste();
+		
+		for(int i =0; i <= antall; i++ ) {
+			resultat += tab[i].toString() + "/t";
+			antall--;
 		}
 		return resultat;
 		}

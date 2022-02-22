@@ -248,19 +248,30 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	public boolean undermengde(MengdeADT<T> m2) {
 	// TODO
 		LinearNode<T> aktuell = start;
-		MengdeADT<T> overmengde = this;
+		KjedetMengde<T> overmengde = this;
 		MengdeADT<T> undermengde = m2;
-
+		boolean erUnderMengde = false;
 		while(aktuell != null) {
-			if(sortert.length >= m2.length) {
+			if(undermengde == null && overmengde == null) {
+				erUnderMengde = true;
+			}
+			if(undermengde == null || (undermengde!= null && overmengde == null)) {
+				erUnderMengde = false;
+			}
+			while(overmengde != null) {
+				overmengde = this;
+				while(undermengde != null) {
+					if(overmengde == null)
+						erUnderMengde = false;
+					else if(undermengde == overmengde) {
+						
+					}
+				}
+			}
 				
-			}
-			if(overmengde.containsALL(Mengde<T> m2)) {
-				return true;
-			}
 		}
 		
-		boolean erUnderMengde = true;
+		
 		// ...
 		
 		return erUnderMengde;
