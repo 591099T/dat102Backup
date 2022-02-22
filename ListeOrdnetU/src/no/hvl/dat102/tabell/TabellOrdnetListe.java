@@ -83,17 +83,55 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 
 	@Override
 	public void leggTil(T element) {
+		/**
+		 * 
+		 * if(liste.length == bak) {
+		 * 	utvidKapasiteten();
+		 * }
+		 * if(forste == bak){
+		 * 	
+		 * }
+		 * for (int i =1;i<forste; i++){
+		 * 
+		 * 
+		 * }*/
+		for (int i = foerste(liste[]); i <= bak; i++) {
+			T temp = liste[i];
+			int j = i-1;
+			boolean ferdig = false;
+			while (!ferdig || j < 0) {
+				if(temp.compareTo(liste[j]) < 0) {
+					liste[j+1]=liste[j];
+					j--;
+				}else {
+					ferdig = true;
+				}
+			}
+			liste[j+1]=temp;
+		}
 		
+		// **************************************************
+		 T resultat = null;
+		 int indeks = finn(element);
 		int i;
-		for(i=0; i<liste.length-1;i++) {
-			if(liste[i]>element.getElement()) {
+		if (bak==liste.length) {
+			utvid();
+		}
+		
+		for(i=0; i<liste.length;i++) {
+			if(indeks >bak && indeks < finn(liste[i]))
+			if(element.compareTo(liste[i])>0) {
+				
 				break;
+			}
+			if(element.compareTo(liste[i])==0) {
+				
 			}
 			for(int k= i; k< liste.length-1;k++) {
 				liste[k+1]=liste[k];
 				liste[i]=element;
 				
-			}
+			}bak++;
 		}
 		/**
 		
@@ -155,7 +193,7 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 			 	for(int i =indeks; i < bak; i++) {
 			 		liste[i] = liste[i+1];
 			 	}
-			 	liste[bak]=null;
+			 //	liste[bak]=null;
 			 }
 			 return resultat;
 		

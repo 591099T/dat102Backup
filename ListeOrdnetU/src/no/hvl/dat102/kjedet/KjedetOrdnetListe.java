@@ -38,7 +38,12 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	public T fjernSiste() {// ...Fyll ut
 		if (erTom())
 			throw new EmptyCollectionException("ordnet liste");
-	
+		LinearNode<T> node = foerste;
+		LinearNode<T> prev = null;
+		for (
+				node.getNeste() != null; 
+				prev = node, node = node.getNeste());
+				//***************************
 		T resultat = null;
 		
 		resultat = siste.getElement();

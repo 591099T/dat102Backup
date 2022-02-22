@@ -164,16 +164,22 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	/*
 	 * Denne versjonen av unionen er lite effektiv
 	 * 
-	 * @Override public MengdeADT<T> union(MengdeADT<T> m2) { TabellMengde<T> begge
-	 * = new TabellMengde<T>(); for (int i = 0; i < antall; i++) {
-	 * begge.leggTil(tab[i]); } Iterator<T> teller = m2.oppramser();
+	 * @Override public MengdeADT<T> union(MengdeADT<T> m2) { 
+	 * TabellMengde<T> begge = new TabellMengde<T>(); 
+	 * for (int i = 0; i < antall; i++) {
+	 * begge.leggTil(tab[i]); 
+	 * } 
+	 * Iterator<T> teller = m2.oppramser();
 	 * 
-	 * while (teller.hasNext()) { begge.leggTil(teller.next()); } return
-	 * (MengdeADT<T>)begge; }
+	 * while (teller.hasNext()) { 
+	 * begge.leggTil(teller.next()); 
+	 * } 
+	 * return(MengdeADT<T>)begge; 
+	 * }
 	 */
 	@Override
 
-	public MengdeADT<T> union(MengdeADT<T> m2) {
+	public MengdeADT<T> union(MengdeADT<T> m2) { // fylt ut
 		//TODO - Lage en mer effektiv kode
 		MengdeADT<T> begge = new TabellMengde<T>();
 		T element = null;
@@ -189,22 +195,31 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	}//
 
 	@Override
-	public MengdeADT<T> snitt(MengdeADT<T> m2) {
-		MengdeADT<T> snittM = new TabellMengde<T>();
+	public MengdeADT<T> snitt(MengdeADT<T> m2) { // Fylt ut
+		TabellMengde<T> snittM = new TabellMengde<T>();
 		T element = null;
-		/*
-		 * ...
-		 */
+		
+		for (int i=0; i<antall;i++) {
+		 	if(m2.inneholder(tab[i])){
+		 	TabellMengde<T >snittM = settInn(tab[i]);
+		 		
+		 }
+		}
+		 
+		 
 		return snittM;
 	}
 
 	@Override
-	public MengdeADT<T> differens(MengdeADT<T> m2) {
+	public MengdeADT<T> differens(MengdeADT<T> m2) {  // fylt ut
 		//TODO
-		MengdeADT<T> differensM = new TabellMengde<T>();
+		TabellMengde<T> differensM = new TabellMengde<T>();
 		T element;
 		/*
-		 * Fyll ut
+		 * Map<Integer, Integer> teller = new HashMap<>();
+		 * for(int value : m2) {
+		 * 	int aktuell = teller.
+		 * }
 		 * 
 		 * if (!m2.inneholder(element)) ((TabellMengde<T>) differensM).settInn(element);
 		 */
@@ -213,7 +228,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	}
 
 	@Override
-	public boolean undermengde(MengdeADT<T> m2) {
+	public boolean undermengde(MengdeADT<T> m2) {  // fylt ut
 		//TODO
 		
 		boolean erUnderMengde = true;
@@ -239,7 +254,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		
 	
 		String resultat = " ";
-		tab[] aktuell = start;
+		tab[] aktuell = antall;
 		while(aktuell != null){
 		resultat += aktuell.getElement().toString() + "\t"; 
 		aktuell = aktuell.getNeste();

@@ -1,6 +1,9 @@
 package no.hvl.dat102.MengdeMedlem;
 
+
 import java.util.Scanner;
+
+import no.hvl.dat102.mengde.adt.MengdeADT;
 
 public class Tekstgrensesnitt {
 	
@@ -9,22 +12,35 @@ public class Tekstgrensesnitt {
 	public static Medlem lesMedlem(){
 
 		Scanner inskriv = new Scanner(System.in);
-		String tekst = inskriv.nextLine();
-		System.out.println(tekst);
-		return tekst;
+		
+		System.out.println("Skriv inn navn: "); 
+		  String navn = inskriv.nextLine();
+		  
+		  System.out.println("Skriv inn hobbyer: ");
+		 
+		  String hobbyer = inskriv.nextLine();
+		  MengdeADT<Hobby> hobbyerr= MengdeADT<Hobby>(inskriv.nextLine());
+		  
+		  System.out.println("Skriv inn statusindeks: ");
+		  int statusIndeks = Integer.parseInt(inskriv.nextLine());
+		  
+		 
+		  Medlem medlem = new Medlem(navn, hobbyer, statusIndeks);
+		  return medlem;
 		
 	//f.eks. bruke Scanner.
 	}
 	// Skriver ut hobbylisten for et medlem
 	
 	public static void skrivHobbyListe(Medlem medlem) { 
-		System.out.println("Alle hobbyene "); System.out.println(medlem.getHobbyer().toString());
+		System.out.println("Alle hobbyene "); 
+		System.out.println(medlem.getHobbyer().toString());
 	}
-	
+	 
 	public static void skrivParListe (Datakontakt arkiv){
 		
 		
-	}
+	} 
 	/* skriver ut på skjermen en oversikt over medlemmer som er koblet
 	til hverandre i medlemstabellen til enhver tid.
 	Et slikt par skal kun vises én gang på utskriftlisten. Metoden

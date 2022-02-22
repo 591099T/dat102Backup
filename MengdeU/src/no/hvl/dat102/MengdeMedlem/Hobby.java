@@ -19,6 +19,7 @@ public class Hobby {
 	public void setHobbyNavn(String hobbyNavn) {
 		this.hobbyNavn = hobbyNavn;
 	}
+	@Override
 	public String toString(){
 	//… returnerer hobbynavnet med ”<” foran og ”>” bak som
 	// String (Eksempel: <tegne, male>)
@@ -26,7 +27,7 @@ public class Hobby {
 	return "<"+hobbyNavn+">";
 	}
 	
-	
+	@Override
 	public boolean equals(Object hobby2){
 	// eventuelt fylle ut først med "standard" kode
 	// som vi ofte har med overkjøring av

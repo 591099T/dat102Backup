@@ -40,18 +40,21 @@ public class Medlem {
 		}
 		
 		
-		public void passerTil(Medlem medlem2) {
+		public  boolean  passerTil(Medlem medlem2) {
 			//Har dei nøyaktig samme hobbyane. 
 			//(Like mengder)
-			if (this == medlem2) {
-				return true;
+			boolean passer= false;
+			MengdeADT<Hobby> midler = this.getHobbyer();
+			MengdeADT<Hobby> midler2 = medlem2.getHobbyer();
+			if (midler == midler2) {
+				passer= true;
 			}
-			if (medlem2 == null ) {
-				return false;
+			if (midler2 == null ) {
+				passer= false;
 			}
-			if (getClass() != getClass(medlem2)) {
-				return false;
-			}
+			if (midler.getClass() != midler2.getClass()) {
+				passer= false;
+			}return passer;
 		}
 		//… Andre metoder
 		}
