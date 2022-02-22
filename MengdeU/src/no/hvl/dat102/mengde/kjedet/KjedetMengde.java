@@ -214,7 +214,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 				element = teller.next();
 				((KjedetMengde<T>) snittM).settInn(element);	
 			}
-			snittM = snittM / snittM.antall();
+			//snittM = snittM / snittM.antall();
 		
 		return snittM;
 	}
@@ -246,7 +246,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public boolean undermengde(MengdeADT<T> m2) {
-		// TODO
+	// TODO
 		LinearNode<T> aktuell = start;
 		MengdeADT<T> overmengde = this;
 		MengdeADT<T> undermengde = m2;
@@ -292,4 +292,4 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		}
 
 
-}// class
+}// class  

@@ -19,7 +19,7 @@ public class Tekstgrensesnitt {
 		  System.out.println("Skriv inn hobbyer: ");
 		 
 		  String hobbyer = inskriv.nextLine();
-		  MengdeADT<Hobby> hobbyerr= MengdeADT<Hobby>(inskriv.nextLine());
+		  MengdeADT<Hobby> hobbyerr= TabellMengde<Hobby>inskriv.nextLine());
 		  
 		  System.out.println("Skriv inn statusindeks: ");
 		  int statusIndeks = Integer.parseInt(inskriv.nextLine());
@@ -38,7 +38,10 @@ public class Tekstgrensesnitt {
 	}
 	 
 	public static void skrivParListe (Datakontakt arkiv){
-		
+	
+		for(int i = 0; i<medlemstabell.length;i++) {
+			
+		}
 		
 	} 
 	/* skriver ut på skjermen en oversikt over medlemmer som er koblet

@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class Datakontakt extends Medlem{
 	
-	private Medlem[] medlemstabell;
+	Medlem[] medlemstabell;
 	private int antallMedlemmer;
 	private int startnr = 100;
 	
@@ -73,16 +73,16 @@ public class Datakontakt extends Medlem{
 		Medlem indeks = null;
 		Medlem indeks2 = null;
 		for (int i = 0; i<medlemstabell.length; i++) {
-			if(medlemstabell[i].getStatusIndeks()!= -1 && medlemstabell[i].getNavn() == medlemsnavn) {
-				indeks= medlemstabell[i];
+			if(medlemstabell[i].getStatusIndeks()== -1 && medlemstabell[i].getNavn() == medlemsnavn) {
+				indeks2= medlemstabell[i];
+			//	indeks.setStatusIndeks(i);  Gjøre dette når eg har funnet eit anna par.
 				for(int j = 0; j< medlemstabell.length;j++) {
-					if() {
-						
+					if(medlemstabell[j].getStatusIndeks() == -1 && medlemstabell[j].passerTil(indeks2) ) {
+						indeks2.setStatusIndeks(i);
+						indeks.setStatusIndeks(j);
 					}
 				}
-				medlemstabell[passerTil(indeks)].setStatusIndeks();
-				boolean medlem2 = passerTil(indeks);
-				medlemstabell[i].setStatusIndeks();
+				
 			}else {
 				
 				indeks= medlemstabell[-1];

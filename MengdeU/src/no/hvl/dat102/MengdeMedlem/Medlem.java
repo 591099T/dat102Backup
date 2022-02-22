@@ -4,9 +4,11 @@ import no.hvl.dat102.mengde.adt.MengdeADT;
 
 public class Medlem {
 
+	
+	
 		private String navn;
 		private MengdeADT<Hobby> hobbyer;
-		private int statusIndeks;
+		private int statusIndeks =-1;
 		//… Konstruktør
 		
 		public Medlem() {
@@ -56,7 +58,16 @@ public class Medlem {
 				passer= false;
 			}return passer;
 		}
+		
 		//… Andre metoder
+		
+		@Override
+		public String toString() {
+			return "Medlem [navn=" + navn + ", hobbyer=" + hobbyer + ", statusIndeks="
+					+ statusIndeks  + "]";
+		
+		}
+		  
 		}
 
 
