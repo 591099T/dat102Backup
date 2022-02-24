@@ -27,12 +27,14 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 
 		T resultat = null;
 		// ... Fyll ut
+		if(!erTom()) {
 		resultat = liste[bak - 1];
+		liste[bak-1] = null;
 		bak--;
 		/**
 		 * for (int i = 0; i <bak;i++) { liste[bak] = liste[i+1]; }
 		 */
-
+		}
 		return resultat;
 	}
 
@@ -42,11 +44,14 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 			throw new EmptyCollectionException("ordnet liste");
 
 		T resultat = null;
-		// ... Fyll ut
-		resultat = liste[0];
-		bak--;
-		for (int i = 0; 1 < bak; i++) {
-			liste[i] = liste[i + 1];
+		//... Fyll ut
+		if(!erTom()) {
+			resultat = liste[0];
+			bak--;
+			//Flytter alle elementer ett hakk nedover i listen
+			for(int i = 0; i < bak; i++) {
+				liste[i] = liste[i + 1];
+			}
 		}
 		return resultat;
 	}
@@ -55,8 +60,11 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	public T foerste() {
 		if (erTom())
 			throw new EmptyCollectionException("ordnet liste");
-
-		T resultat = liste[0];
+		
+		T resultat = null;
+		if (!erTom()){
+			resultat = liste[0];
+		}
 		return resultat;
 	}
 
@@ -82,6 +90,22 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 
 	@Override
 	public void leggTil(T element) {
+		
+		if(bak == liste.length) {
+    		utvid();
+    	}
+    	int i = 0;
+    	//Finner hvor elementet skal
+    	while(i < bak && element.compareTo(liste[i]) > 0) {
+    		i++;
+    	}
+    	int j = bak;
+    	while(j > i) {
+    		liste[j] = liste[j-1];
+    		j--;
+    	}
+    	liste[i] = element;
+    	bak++;
 		/**
 		 * 
 		 * if(liste.length == bak) { utvidKapasiteten(); } if(forste == bak){
@@ -111,7 +135,7 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		// **********************************************
 
 		// int indeks = finn(element);
-		int i;
+		/**int i;
 		if (bak == liste.length && liste.length == 0) {
 			utvid();
 		}
@@ -124,7 +148,8 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 				j--;
 			}
 			liste[j + 1] = aktuell;
-			bak++;
+			bak++;*/
+		//*************************************************
 			// if(indeks >bak && indeks < finn(liste[i]))
 			/**
 			 * if(element.compareTo(liste[i])>0) {
@@ -149,7 +174,7 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		 * while(i< bak && element.compareTo(liste[i]) > 0 ) { i++; } int j = bak;
 		 * while(i < j) { liste[j]=liste[i]; j--; } element = liste[i];
 		 */
-	}
+	
 
 	@Override
 	public boolean inneholder(T element) {
@@ -164,8 +189,22 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 
 	@Override
 	public T fjern(T element) {
+		
+		int index = finn(element);
+		
+		if(index != -1) {
+			bak--;
+			//Flytter alle elementer ett hakk nedover i listen
+			for(int i = index; i < bak; i++) {
+				liste[i] = liste[i + 1];
+			}
+		}
+		else {
+			element = null;
+		}
+		return element;
 
-		if (erTom())
+		/**if (erTom())
 			throw new EmptyCollectionException("ordnet liste");
 
 		T resultat = null;
@@ -179,7 +218,7 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 			}
 			// liste[bak]=null;
 		}
-		return resultat;
+		return resultat;*/
 
 		// ...Fyll ut
 		/**
@@ -222,13 +261,14 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		// ...Fyll ut
 		// int i = 0, resultat = -1;
 		if (!erTom()) {
-			while (i < bak && el.compareTo(liste[i]) > 0) {
-				i++;
-			}
-			if (i <= bak && el.compareTo(liste[i]) == 0) {
-				resultat = i;
-			}
-		}
+			while(resultat == -1 && i < bak) {
+				if(liste[i].equals(el)) {
+					resultat = i;
+				}
+				else {
+					i++;
+				}
+		}}
 
 		return resultat;
 	}

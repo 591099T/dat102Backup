@@ -225,7 +225,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public MengdeADT<T> differens(MengdeADT<T> m2) {  // fylt ut
-		//TODO
+		
 		MengdeADT<T> differensM = new TabellMengde<T>();
 		Iterator<T> p = this.iterator();
 		T element;

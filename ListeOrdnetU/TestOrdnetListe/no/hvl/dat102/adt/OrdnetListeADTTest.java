@@ -177,7 +177,7 @@ public abstract class OrdnetListeADTTest {
 		liste.fjern(e1);
 		liste.fjern(e2);
 		liste.fjern(e3);
-		liste.fjern(e5);
+		liste.fjern(e4);
 
 		assertTrue(liste.erTom());
 		
