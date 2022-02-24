@@ -13,7 +13,6 @@ public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelK
 		DobbelNode<T> start= new DobbelNode<T>(minVerdi);
 		foerste = start;
 		
-		
 		// Siste node
 		antall = 0;
 		DobbelNode<T> slutt = new DobbelNode<T>(maksVerdi);
@@ -21,7 +20,7 @@ public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelK
 		// Kjeding
 		start.setNeste(slutt);
 		slutt.setForrige(start);
-		
+		siste= slutt;
 		
 	}
 

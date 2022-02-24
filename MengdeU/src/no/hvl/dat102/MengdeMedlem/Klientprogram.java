@@ -11,10 +11,11 @@ public class Klientprogram {
 		MengdeADT<Hobby> sprint = new TabellMengde<Hobby>();
 		MengdeADT<Hobby> spille = new TabellMengde<Hobby>();
 		
-		Medlem b1 = new Medlem("Trygve Jenssen", male);
+		String b1 = new Medlem("Trygve Jenssen", male);
 		Medlem b2 = new Medlem("Trygve Jenssen", danse);
 		Medlem b3 = new Medlem("Trygve Jenssen", sprint);
 		Medlem b4 = new Medlem("Trygve Jenssen", spille);
+		
 		
 		b1.setHobbyer(spille);
 		b1.setHobbyer(danse);
@@ -23,6 +24,10 @@ public class Klientprogram {
 		b2.setHobbyer(male);
 		b3.setHobbyer(male);
 		b3.setHobbyer(spille);
+		
+		int pos = Datakontakt.finnMedlemsIndeks(b1);
+		Medlem[] liste = Datakontakt.getMedlemstabell();
+		Tekstgrensesnitt.skrivHobbyListe(liste[pos]);
 		
 		b1.toString();
 		b2.toString();
