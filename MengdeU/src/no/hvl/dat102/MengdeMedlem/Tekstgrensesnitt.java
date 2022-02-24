@@ -27,7 +27,7 @@ public class Tekstgrensesnitt {
 			mengde.leggTil(new Hobby(s));
 		}
 		
-		return new Medlem(navn, mengde);
+		return new Medlem(navn, mengde);}
 
 	//	System.out.println("Skriv inn statusindeks: ");
 	//	int statusIndeks = Integer.parseInt(inskriv.nextLine());
@@ -36,7 +36,7 @@ public class Tekstgrensesnitt {
 	//	return medlem;
 
 		// f.eks. bruke Scanner.
-	}
+	
 	// Skriver ut hobbylisten for et medlem
 
 	public static void skrivHobbyListe(Medlem medlem) {
