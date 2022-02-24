@@ -25,9 +25,9 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	public T fjernFoerste() {// ...Fyllt ut
 		if (erTom())
 			throw new EmptyCollectionException("ordnet liste");
-		
+
 		T resultat = null;
-		
+
 		resultat = foerste.getElement();
 		foerste = foerste.getNeste();
 		antall--;
@@ -38,14 +38,13 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	public T fjernSiste() {// ...Fyll ut
 		if (erTom())
 			throw new EmptyCollectionException("ordnet liste");
-		LinearNode<T> node = foerste;
-		LinearNode<T> prev = null;
-		for (
-				node.getNeste() != null; 
-				prev = node, node = node.getNeste());
-				//***************************
+		/**
+		 * LinearNode<T> node = foerste; LinearNode<T> prev = null; for (
+		 * node.getNeste() != null; prev = node, node = node.getNeste());
+		 */
+		// ***************************
 		T resultat = null;
-		
+
 		resultat = siste.getElement();
 		siste = siste.getNeste();
 		antall--;
@@ -57,7 +56,7 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		if (erTom())
 			throw new EmptyCollectionException("ordnet liste");
 		T svar = foerste.getElement();
-		
+
 		return svar;
 	}
 
@@ -83,62 +82,42 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 
 	@Override
 	public void leggTil(T element) {
-		
+
 		if (!(inneholder(element))) {
 			LinearNode<T> nyNode = new LinearNode<T>(element);
 			LinearNode<T> aktuell = foerste;
-			
-			while(element.compareTo(aktuell.getElement()) >0) {
-				aktuell= aktuell.getNeste();
-			
+
+			while (element.compareTo(aktuell.getElement()) > 0) {
+				aktuell = aktuell.getNeste();
+
 			}
 			nyNode.setNeste(aktuell);
 			aktuell = nyNode;
 			antall++;
 		}
-	/**	LinearNode<T> nyNode = new LinearNode<T>(element);
-		LinearNode<T> aktuell = foerste.getNeste();
-		while ((element.compareTo(aktuell.getElement()) > 0)) {
-			aktuell = aktuell.getNeste();
-		}
-		nyNode = aktuell.getNeste();
-		aktuell = nyNode;
-		boolean funnet = false;
-		for(int i = 0; i< antall && !funnet; i++) {
-			if(liste[i]> element.getElement()) {
-				funnet = true;
-				for(int j = antall; j> i; j--) {
-					liste[j] = liste[j-1];
-				}
-				liste[i]=element;
-				antall++;
-			}
-		}  */
-		
-		/**if (!(inneholder(element))) {
-			LinearNode<T> nyNode = new LinearNode<T>(element);
-			LinearNode<T> aktuell = foerste.getNeste();
-			while(element.compareTo(aktuell.getElement()) >0) {
-				aktuell= aktuell.getNeste();
-			
-			}
-			nyNode.setNeste(aktuell);
-			aktuell = node;
-			antall++;
-		}*/
-		
-		
-		
-		
-		/**int i = 0;
-		if(i < siste && element.compareTo()) {
-			i++;
-		}
-		LinearNode<T> nyNode = new LinearNode<T>(element);
-		nyNode.setNeste(foerste);
-		foerste = nyNode;
-		antall++;
-		*/
+		/**
+		 * LinearNode<T> nyNode = new LinearNode<T>(element); LinearNode<T> aktuell =
+		 * foerste.getNeste(); while ((element.compareTo(aktuell.getElement()) > 0)) {
+		 * aktuell = aktuell.getNeste(); } nyNode = aktuell.getNeste(); aktuell =
+		 * nyNode; boolean funnet = false; for(int i = 0; i< antall && !funnet; i++) {
+		 * if(liste[i]> element.getElement()) { funnet = true; for(int j = antall; j> i;
+		 * j--) { liste[j] = liste[j-1]; } liste[i]=element; antall++; } }
+		 */
+
+		/**
+		 * if (!(inneholder(element))) { LinearNode<T> nyNode = new
+		 * LinearNode<T>(element); LinearNode<T> aktuell = foerste.getNeste();
+		 * while(element.compareTo(aktuell.getElement()) >0) { aktuell=
+		 * aktuell.getNeste();
+		 * 
+		 * } nyNode.setNeste(aktuell); aktuell = node; antall++; }
+		 */
+
+		/**
+		 * int i = 0; if(i < siste && element.compareTo()) { i++; } LinearNode<T> nyNode
+		 * = new LinearNode<T>(element); nyNode.setNeste(foerste); foerste = nyNode;
+		 * antall++;
+		 */
 	}
 
 	@Override

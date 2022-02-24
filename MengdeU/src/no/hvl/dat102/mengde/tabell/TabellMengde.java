@@ -85,15 +85,18 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		if (erTom())
 			throw new EmptyCollectionException("mengde");
 
-		boolean funnet = false;
+		
 		T svar = null;
-		for(int i = 0; (i < antall && !funnet);i++) {
+		for(int i = 0; (i < antall && svar == null);i++) {
 			if(tab[i].equals(element)) {
 				svar = tab[i];
-				tab[i] = tab[antall-1];
+				for(int j = i; j<antall-1;i++) {
+					tab[j] = tab[j+1];
+				}antall--;
+				
 				//tab[antall-1] = null;
-				antall--;
-				funnet = true;
+			
+			
 				
 			}
 		}
@@ -129,9 +132,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	public boolean equals(Object m2) {
 		//TODO
 		boolean likeMengder = true;
-		T element;
-
-		
+		T element;	
 		 if (this == m2) {
 			return true;
 		}
@@ -140,8 +141,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		}
 		if (getClass() != m2.getClass()) {
 			return false;
-		}
-		
+		}	
 		MengdeADT<T> m3 = (TabellMengde<T>) m2;
 		if (this.antall != m3.antall()) {
 			likeMengder = false;
@@ -154,9 +154,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 					likeMengder = false;
 				}
 			}
-		}
-		 
-		return likeMengder;
+		} return likeMengder;
 	}
 
 	
@@ -182,7 +180,13 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	public MengdeADT<T> union(MengdeADT<T> m2) { // fylt ut
 		//TODO - Lage en mer effektiv kode
 		MengdeADT<T> begge = new TabellMengde<T>();
-		
+		for (int i=0; i<antall; i++) {
+			((TabellMengde<T>) begge).settInn(tab[i]);
+		}
+		Iterator<T> p = m2.iterator();
+		while(p.hasNext()) {
+			begge.leggTil(p.next());
+		}
 		/*
 		 * ...for (int i = 0; i < antall; i++) {
 	 * begge.leggTil(tab[i]); } Iterator<T> teller = m2.oppramser();
@@ -196,16 +200,24 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public MengdeADT<T> snitt(MengdeADT<T> m2) { // Fylt ut
-		TabellMengde<T> snittM = new TabellMengde<T>();
+		MengdeADT<T> snittM = new TabellMengde<T>();
 	
-		TabellMengde<T> temp = new TabellMengde<T>();
+		Iterator<T> m1 = iterator();
+		Iterator<T> p = m2.iterator();
+		while (p.hasNext()) {
+			((TabellMengde<T>) snittM).settInn(m1.next());
+		}
+		while(p.hasNext()) {
+			((TabellMengde<T>) snittM).settInn(p.next());
+		}
 		
-		for (int i=0; i<antall;i++) {
+		
+	/**	for (int i=0; i<antall;i++) {
 		 	if(m2.inneholder(tab[i])){
 		 	snittM.settInn(tab[i]);
 		 		
 		 }
-		}
+		}*/
 		
 		 
 		return snittM;
@@ -214,8 +226,15 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	@Override
 	public MengdeADT<T> differens(MengdeADT<T> m2) {  // fylt ut
 		//TODO
-		TabellMengde<T> differensM = new TabellMengde<T>();
-		
+		MengdeADT<T> differensM = new TabellMengde<T>();
+		Iterator<T> p = this.iterator();
+		T element;
+		while(p.hasNext()) {
+			element = p.next();
+			if(!differensM.inneholder(element)) {
+				((TabellMengde<T>) differensM).settInn(element);
+			}
+		}
 		/*
 		 * Map<Integer, Integer> teller = new HashMap<>();
 		 * for(int value : m2) {
@@ -225,7 +244,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		 * if (!m2.inneholder(element)) ((TabellMengde<T>) differensM).settInn(element);
 		 */
 		
-		for(int i = 0; i<antall; i++) {
+	/**	for(int i = 0; i<antall; i++) {
 			if(!m2.inneholder(tab[i])) {
 				differensM.leggTil(tab[i]);
 			}
@@ -238,7 +257,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 				
 			}
 			differensM = union(m2).fjern(snitt(m2));
-		}
+		}*/
 		
 		
 
@@ -247,11 +266,17 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public boolean undermengde(MengdeADT<T> m2) {  // fylt ut
-		//TODO
-		
-		boolean erUnderMengde = true;
+		boolean erUnderMengde = false;
+		for(int i = 0; i<antall && erUnderMengde == false;i++) {
+			if(tab[i].equals(m2)) {
+				erUnderMengde = true;
+			}
+		}
+		//if(m2.equals(this)) {
+	//		erUndermengde = false
+	//	}
 		// ...
-		return false;
+		return erUnderMengde;
 	}
 
 	@Override
