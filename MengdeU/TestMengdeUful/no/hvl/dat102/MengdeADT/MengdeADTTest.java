@@ -8,14 +8,14 @@ import org.junit.Test;
 
 import no.hvl.dat102.mengde.adt.MengdeADT;
 
-public abstract class MengdeADTTest {
+public class MengdeADTTest {
 	private MengdeADT<Integer> intListe1;
 	private MengdeADT<Integer> intListe2;
 	private MengdeADT<Integer> svar;
 	private MengdeADT<Integer> fasit;
 	
 	
-	public abstract MengdeADT<Integer> reset();
+	public  MengdeADT<Integer> reset();
 	
 	@Before
 	public void setup() {

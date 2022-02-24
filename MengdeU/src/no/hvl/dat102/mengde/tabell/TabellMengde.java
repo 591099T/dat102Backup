@@ -7,7 +7,7 @@ import java.util.Random;
 import no.hvl.dat102.exception.EmptyCollectionException;
 import no.hvl.dat102.mengde.adt.MengdeADT;
 import no.hvl.dat102.mengde.kjedet.KjedetMengde;
-import no.hvl.dat102.mengde.kjedet.LinearNode;
+
 
 public class TabellMengde<T> implements MengdeADT<T> {
 	// ADT-en Mengde implementert som tabell
@@ -272,13 +272,11 @@ public class TabellMengde<T> implements MengdeADT<T> {
 				erUnderMengde = true;
 			}
 		}
-		//if(m2.equals(this)) {
-	//		erUndermengde = false
-	//	}
-		// ...
 		return erUnderMengde;
 	}
 
+	
+	
 	@Override
 	public Iterator<T> iterator() {
 		return new TabellIterator<T>(tab, antall);
