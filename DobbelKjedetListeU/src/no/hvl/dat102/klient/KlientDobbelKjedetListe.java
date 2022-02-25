@@ -12,9 +12,9 @@ public class KlientDobbelKjedetListe {
 		// Legger data inn i listen
 		for (int i = 0; i < ord.length; i++) {
 			liste.leggTil(ord[i]);
-
 		}
 		// Utskrift foran
+		liste.visListe();
 		System.out.println(liste);
 
 		// Utskrift bak
